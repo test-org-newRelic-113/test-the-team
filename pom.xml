@@ -130,6 +130,41 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.65</version>
         </dependency>
+
+        <!-- 17. Apache Velocity server-side template injection RCE (CVE-2020-13936) -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+        <!-- 18. Fastjson RCE via deserialization (CVE-2019-14540) -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.60</version>
+        </dependency>
+
+        <!-- 19. Commons BeanUtils class traversal vulnerability (CVE-2019-10086) -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+        <!-- 20. dom4j XXE injection vulnerability (CVE-2018-1000632) -->
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+        <!-- 21. Spring Framework Spring4Shell RCE (CVE-2022-22965) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
