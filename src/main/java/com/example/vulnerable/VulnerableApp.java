@@ -5,10 +5,17 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.util.StringUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.commons.text.StringSubstitutor;
 import org.hibernate.validator.constraints.NotEmpty;
+import com.thoughtworks.xstream.XStream;
+import org.yaml.snakeyaml.Yaml;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import java.security.Security;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Vulnerable application demonstrating the use of outdated dependencies
@@ -55,8 +62,31 @@ public class VulnerableApp {
             logger.error("H2 Driver not found", e);
         }
 
+        // Using Apache Commons Text (vulnerable to Text4Shell)
+        Map<String, String> valuesMap = new HashMap<>();
+        valuesMap.put("key", "value");
+        StringSubstitutor substitutor = new StringSubstitutor(valuesMap);
+        String result = substitutor.replace("Text interpolation with ${key}");
+        logger.info("Commons Text StringSubstitutor result: {}", result);
+
+        // Using XStream (RCE via deserialization - CVE-2021-29505)
+        XStream xstream = new XStream();
+        logger.info("XStream initialized (vulnerable to RCE): {}", xstream.getClass().getName());
+
+        // Using SnakeYAML (unsafe deserialization - CVE-2022-1471)
+        Yaml yaml = new Yaml();
+        logger.info("SnakeYAML initialized (unsafe deserialization): {}", yaml.getClass().getName());
+
+        // Using Apache Shiro (authentication bypass - CVE-2016-4437, CVE-2020-1957)
+        DefaultSecurityManager securityManager = new DefaultSecurityManager();
+        logger.info("Apache Shiro SecurityManager initialized (auth bypass): {}", securityManager.getClass().getName());
+
+        // Using Bouncy Castle (password verification bypass - CVE-2020-28052)
+        Security.addProvider(new BouncyCastleProvider());
+        logger.info("Bouncy Castle provider registered (vulnerable version 1.65)");
+
         logger.info("Application running with multiple vulnerable dependencies!");
-        logger.info("Total vulnerable dependencies: 10+");
+        logger.info("Total vulnerable dependencies: 16");
     }
 
     /**

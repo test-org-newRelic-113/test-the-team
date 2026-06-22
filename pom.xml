@@ -88,6 +88,48 @@
             <artifactId>h2</artifactId>
             <version>1.4.196</version>
         </dependency>
+
+        <!-- 11. Apache Commons Text vulnerability (CVE-2022-42889 - Text4Shell) -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.9</version>
+        </dependency>
+
+        <!-- 12. XStream RCE via deserialization (CVE-2021-29505) -->
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.17</version>
+        </dependency>
+
+        <!-- 13. SnakeYAML unsafe deserialization leading to RCE (CVE-2022-1471) -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.27</version>
+        </dependency>
+
+        <!-- 14. Netty HTTP request smuggling (CVE-2021-21290, CVE-2021-21295) -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.40.Final</version>
+        </dependency>
+
+        <!-- 15. Apache Shiro authentication bypass (CVE-2016-4437, CVE-2020-1957) -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <!-- 16. Bouncy Castle password verification bypass (CVE-2020-28052) -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.65</version>
+        </dependency>
     </dependencies>
 
     <build>
