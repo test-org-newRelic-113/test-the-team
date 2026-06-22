@@ -114,7 +114,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.40.Final</version>
+            <version>4.1.42.Final</version>
         </dependency>
 
         <!-- 15. Apache Shiro authentication bypass (CVE-2016-4437, CVE-2020-1957) -->
