@@ -142,7 +142,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.60</version>
+            <version>1.2.83</version>
         </dependency>
 
         <!-- 19. Commons BeanUtils class traversal vulnerability (CVE-2019-10086) -->
