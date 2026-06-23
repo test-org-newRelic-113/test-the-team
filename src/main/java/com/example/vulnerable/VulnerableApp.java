@@ -5,20 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.util.StringUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.collections.map.HashedMap;
-import org.apache.commons.text.StringSubstitutor;
-import org.hibernate.validator.constraints.NotEmpty;
 import com.thoughtworks.xstream.XStream;
 import org.yaml.snakeyaml.Yaml;
 import org.apache.shiro.mgt.DefaultSecurityManager;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.apache.velocity.app.VelocityEngine;
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.beanutils.BeanUtils;
 import org.dom4j.DocumentHelper;
 import org.springframework.web.servlet.DispatcherServlet;
-import java.security.Security;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -51,29 +44,6 @@ public class VulnerableApp {
         vulnerableMap.put("status", "vulnerable");
         logger.info("Commons Collections Map: {}", vulnerableMap);
 
-        // Using MySQL Connector
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            logger.info("MySQL Connector loaded (vulnerable version)");
-        } catch (ClassNotFoundException e) {
-            logger.error("MySQL Driver not found", e);
-        }
-
-        // Using H2 Database
-        try {
-            Class.forName("org.h2.Driver");
-            logger.info("H2 Database driver loaded (vulnerable version)");
-        } catch (ClassNotFoundException e) {
-            logger.error("H2 Driver not found", e);
-        }
-
-        // Using Apache Commons Text (vulnerable to Text4Shell)
-        Map<String, String> valuesMap = new HashMap<>();
-        valuesMap.put("key", "value");
-        StringSubstitutor substitutor = new StringSubstitutor(valuesMap);
-        String result = substitutor.replace("Text interpolation with ${key}");
-        logger.info("Commons Text StringSubstitutor result: {}", result);
-
         // Using XStream (RCE via deserialization - CVE-2021-29505)
         XStream xstream = new XStream();
         logger.info("XStream initialized (vulnerable to RCE): {}", xstream.getClass().getName());
@@ -85,14 +55,6 @@ public class VulnerableApp {
         // Using Apache Shiro (authentication bypass - CVE-2016-4437, CVE-2020-1957)
         DefaultSecurityManager securityManager = new DefaultSecurityManager();
         logger.info("Apache Shiro SecurityManager initialized (auth bypass): {}", securityManager.getClass().getName());
-
-        // Using Bouncy Castle (password verification bypass - CVE-2020-28052)
-        Security.addProvider(new BouncyCastleProvider());
-        logger.info("Bouncy Castle provider registered (vulnerable version 1.65)");
-
-        // Using Apache Velocity (SSTI/RCE - CVE-2020-13936)
-        VelocityEngine velocityEngine = new VelocityEngine();
-        logger.info("Apache Velocity engine initialized (SSTI vulnerable): {}", velocityEngine.getClass().getName());
 
         // Using Fastjson (RCE via deserialization - CVE-2019-14540)
         logger.info("Fastjson version loaded: {}", JSON.VERSION);
@@ -107,13 +69,6 @@ public class VulnerableApp {
         logger.info("Spring WebMVC DispatcherServlet loaded: {}", DispatcherServlet.class.getName());
 
         logger.info("Application running with multiple vulnerable dependencies!");
-        logger.info("Total vulnerable dependencies: 21");
-    }
-
-    /**
-     * Example method using Hibernate Validator annotation
-     */
-    public String processInput(@NotEmpty String input) {
-        return "Processed: " + input;
+        logger.info("Total vulnerable dependencies: 11");
     }
 }

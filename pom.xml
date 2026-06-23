@@ -47,55 +47,6 @@
             <version>3.2.1</version>
         </dependency>
 
-        <!-- 5. Apache Struts RCE vulnerabilities -->
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>2.5.10</version>
-        </dependency>
-
-        <!-- 6. Apache Tomcat vulnerabilities -->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>8.5.0</version>
-        </dependency>
-
-        <!-- 7. Hibernate Validator vulnerabilities -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.2.0.Final</version>
-        </dependency>
-
-        <!-- 8. MySQL Connector vulnerabilities -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.40</version>
-        </dependency>
-
-        <!-- 9. Apache Commons FileUpload vulnerability (CVE-2016-1000031) -->
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-
-        <!-- 10. H2 Database remote code execution vulnerability -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-        </dependency>
-
-        <!-- 11. Apache Commons Text vulnerability (CVE-2022-42889 - Text4Shell) -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>1.9</version>
-        </dependency>
-
         <!-- 12. XStream RCE via deserialization (CVE-2021-29505) -->
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
@@ -110,32 +61,11 @@
             <version>1.27</version>
         </dependency>
 
-        <!-- 14. Netty HTTP request smuggling (CVE-2021-21290, CVE-2021-21295) -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.40.Final</version>
-        </dependency>
-
         <!-- 15. Apache Shiro authentication bypass (CVE-2016-4437, CVE-2020-1957) -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>1.4.0</version>
-        </dependency>
-
-        <!-- 16. Bouncy Castle password verification bypass (CVE-2020-28052) -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.65</version>
-        </dependency>
-
-        <!-- 17. Apache Velocity server-side template injection RCE (CVE-2020-13936) -->
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>1.7</version>
         </dependency>
 
         <!-- 18. Fastjson RCE via deserialization (CVE-2019-14540) -->
