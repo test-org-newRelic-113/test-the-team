@@ -12,6 +12,13 @@ import com.alibaba.fastjson.JSON;
 import org.apache.commons.beanutils.BeanUtils;
 import org.dom4j.DocumentHelper;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.apache.commons.text.StringSubstitutor;
+import org.apache.velocity.app.VelocityEngine;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.thymeleaf.TemplateEngine;
+import groovy.lang.GroovyShell;
+import java.security.Security;
+import java.sql.DriverManager;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -68,7 +75,26 @@ public class VulnerableApp {
         // Using Spring WebMVC (Spring4Shell RCE - CVE-2022-22965)
         logger.info("Spring WebMVC DispatcherServlet loaded: {}", DispatcherServlet.class.getName());
 
+        // Using Apache Commons Text (Text4Shell - CVE-2022-42889)
+        logger.info("Commons Text StringSubstitutor loaded: {}", StringSubstitutor.class.getName());
+
+        // Using Apache Velocity (SSTI - CVE-2020-13936)
+        VelocityEngine velocityEngine = new VelocityEngine();
+        logger.info("Apache Velocity engine initialized (SSTI): {}", velocityEngine.getClass().getName());
+
+        // Using Bouncy Castle (password bypass - CVE-2020-28052)
+        Security.addProvider(new BouncyCastleProvider());
+        logger.info("Bouncy Castle provider registered (vulnerable 1.65)");
+
+        // Using Thymeleaf (SSTI - CVE-2021-43466)
+        TemplateEngine templateEngine = new TemplateEngine();
+        logger.info("Thymeleaf TemplateEngine initialized (SSTI): {}", templateEngine.getClass().getName());
+
+        // Using Groovy (unsafe deserialization RCE - CVE-2016-6814)
+        GroovyShell groovyShell = new GroovyShell();
+        logger.info("Groovy GroovyShell initialized (unsafe deserialization): {}", groovyShell.getClass().getName());
+
         logger.info("Application running with multiple vulnerable dependencies!");
-        logger.info("Total vulnerable dependencies: 11");
+        logger.info("Total vulnerable dependencies: 26");
     }
 }
