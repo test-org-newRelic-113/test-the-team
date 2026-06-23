@@ -200,6 +200,76 @@
             <artifactId>groovy-all</artifactId>
             <version>2.4.0</version>
         </dependency>
+
+        <!-- 27. PostgreSQL JDBC SQL injection via connection properties (CVE-2022-21724) -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.25</version>
+        </dependency>
+
+        <!-- 28. Quartz Scheduler XXE injection (CVE-2019-13990) -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <!-- 29. c3p0 XXE/RCE via JNDI (CVE-2019-5427) -->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+
+        <!-- 30. Woodstox XML parser DoS via stack overflow (CVE-2022-40152) -->
+        <dependency>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+            <version>6.2.7</version>
+        </dependency>
+
+        <!-- 31. Jsoup XSS sanitization bypass (CVE-2021-37714) -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.13.1</version>
+        </dependency>
+
+        <!-- 32. Apache PDFBox infinite loop DoS (CVE-2018-8036) -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+
+        <!-- 33. Guava insecure temp directory creation (CVE-2020-8908) -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+
+        <!-- 34. Ehcache open redirect / SSRF (CVE-2019-10098) -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.10.4</version>
+        </dependency>
+
+        <!-- 35. Apache Commons IO path traversal (CVE-2021-29425) -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <!-- 36. Spring Data MongoDB SpEL injection (CVE-2022-22980) -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>3.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
