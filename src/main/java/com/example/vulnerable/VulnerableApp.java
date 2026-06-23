@@ -17,6 +17,10 @@ import org.apache.velocity.app.VelocityEngine;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.thymeleaf.TemplateEngine;
 import groovy.lang.GroovyShell;
+import org.jsoup.Jsoup;
+import com.google.common.io.Files;
+import net.sf.ehcache.CacheManager;
+import org.apache.commons.io.FileUtils;
 import java.security.Security;
 import java.sql.DriverManager;
 import java.util.Map;
@@ -94,7 +98,37 @@ public class VulnerableApp {
         GroovyShell groovyShell = new GroovyShell();
         logger.info("Groovy GroovyShell initialized (unsafe deserialization): {}", groovyShell.getClass().getName());
 
+        // Using PostgreSQL JDBC (SQL injection via properties - CVE-2022-21724)
+        logger.info("PostgreSQL JDBC driver loaded (SQL injection via connection properties)");
+
+        // Using Quartz Scheduler (XXE injection - CVE-2019-13990)
+        logger.info("Quartz Scheduler loaded (XXE injection vulnerable)");
+
+        // Using c3p0 (XXE/RCE via JNDI - CVE-2019-5427)
+        logger.info("c3p0 connection pool loaded (XXE/RCE via JNDI)");
+
+        // Using Woodstox (DoS via stack overflow - CVE-2022-40152)
+        logger.info("Woodstox XML parser loaded (DoS stack overflow)");
+
+        // Using Jsoup (XSS sanitization bypass - CVE-2021-37714)
+        logger.info("Jsoup loaded: {}", Jsoup.class.getName());
+
+        // Using Apache PDFBox (infinite loop DoS - CVE-2018-8036)
+        logger.info("Apache PDFBox loaded (infinite loop DoS)");
+
+        // Using Guava (insecure temp directory - CVE-2020-8908)
+        logger.info("Guava Files utility loaded: {}", Files.class.getName());
+
+        // Using Ehcache (open redirect/SSRF - CVE-2019-10098)
+        logger.info("Ehcache CacheManager loaded: {}", CacheManager.class.getName());
+
+        // Using Apache Commons IO (path traversal - CVE-2021-29425)
+        logger.info("Apache Commons IO FileUtils loaded: {}", FileUtils.class.getName());
+
+        // Using Spring Data MongoDB (SpEL injection - CVE-2022-22980)
+        logger.info("Spring Data MongoDB loaded (SpEL injection vulnerable)");
+
         logger.info("Application running with multiple vulnerable dependencies!");
-        logger.info("Total vulnerable dependencies: 26");
+        logger.info("Total vulnerable dependencies: 36");
     }
 }

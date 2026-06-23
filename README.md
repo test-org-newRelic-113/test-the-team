@@ -8,7 +8,7 @@ This project is designed to test Dependabot's ability to detect and report secur
 
 ## Vulnerable Dependencies
 
-This project includes **10 intentionally vulnerable dependencies**:
+This project includes **11 intentionally vulnerable dependencies**:
 
 ### 1. **Log4j 2.14.0**
 - **CVE-2021-44228** (Log4Shell) - Critical RCE vulnerability
@@ -55,6 +55,11 @@ This project includes **10 intentionally vulnerable dependencies**:
 - **CVE-2018-10054**, **CVE-2018-14335** - Remote code execution
 - Severity: Critical
 
+### 11. **Apache Commons Text 1.9**
+- **CVE-2022-42889** (Text4Shell) - Variable interpolation RCE vulnerability
+- Similar to Log4Shell, allows remote code execution via script engine execution
+- Severity: Critical
+
 ## Building the Project
 
 ```bash
@@ -72,7 +77,7 @@ mvn exec:java -Dexec.mainClass="com.example.vulnerable.VulnerableApp"
 
 1. Push this code to a GitHub repository
 2. Enable Dependabot security alerts in the repository settings
-3. Dependabot should detect and create alerts for all 10 vulnerable dependencies
+3. Dependabot should detect and create alerts for all 11 vulnerable dependencies
 4. Dependabot should create pull requests to update these dependencies to secure versions
 
 ## Security Recommendations (for fixing)
@@ -89,6 +94,7 @@ To fix these vulnerabilities, update to the following minimum versions:
 - MySQL Connector: 8.0.28 or later
 - Apache Commons FileUpload: 1.3.3 or later
 - H2 Database: 2.1.210 or later
+- Apache Commons Text: 1.10.0 or later
 
 ## Disclaimer
 
