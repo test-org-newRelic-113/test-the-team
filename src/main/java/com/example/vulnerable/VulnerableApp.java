@@ -138,7 +138,13 @@ public class VulnerableApp {
         // Using Protobuf Java (DoS - CVE-2021-22569)
         logger.info("Protobuf JsonFormat loaded: {}", JsonFormat.class.getName());
 
+        // Using Spring Boot (Spring4Shell RCE - CVE-2022-22965)
+        logger.info("Spring Boot loaded (Spring4Shell RCE vulnerable)");
+
+        // Using Logback (JNDI RCE - CVE-2021-42550)
+        logger.info("Logback Classic loaded (JNDI RCE vulnerable)");
+
         logger.info("Application running with multiple vulnerable dependencies!");
-        logger.info("Total vulnerable dependencies: 41");
+        logger.info("Total vulnerable dependencies: 43");
     }
 }
