@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
-            <version>8.5.0</version>
+            <version>9.0.118</version>
         </dependency>
 
         <!-- hibernate-validator EL injection (CVE-2017-7536) -->
