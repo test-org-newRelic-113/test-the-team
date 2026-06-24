@@ -21,6 +21,9 @@ import org.jsoup.Jsoup;
 import com.google.common.io.Files;
 import net.sf.ehcache.CacheManager;
 import org.apache.commons.io.FileUtils;
+import org.apache.cxf.BusFactory;
+import com.nimbusds.jose.JWSAlgorithm;
+import com.google.protobuf.util.JsonFormat;
 import java.security.Security;
 import java.sql.DriverManager;
 import java.util.Map;
@@ -128,7 +131,14 @@ public class VulnerableApp {
         // Using Spring Data MongoDB (SpEL injection - CVE-2022-22980)
         logger.info("Spring Data MongoDB loaded (SpEL injection vulnerable)");
 
+        // Using Apache CXF (XXE injection - CVE-2016-8739)
+        logger.info("Apache CXF BusFactory loaded: {}", BusFactory.class.getName());
+        // Using Nimbus JOSE+JWT (algorithm confusion - CVE-2019-17195)
+        logger.info("Nimbus JOSE JWSAlgorithm loaded: {}", JWSAlgorithm.class.getName());
+        // Using Protobuf Java (DoS - CVE-2021-22569)
+        logger.info("Protobuf JsonFormat loaded: {}", JsonFormat.class.getName());
+
         logger.info("Application running with multiple vulnerable dependencies!");
-        logger.info("Total vulnerable dependencies: 36");
+        logger.info("Total vulnerable dependencies: 41");
     }
 }
