@@ -305,6 +305,20 @@
             <artifactId>protobuf-java</artifactId>
             <version>3.19.0</version>
         </dependency>
+
+        <!-- Spring Boot Spring4Shell RCE (CVE-2022-22965) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <!-- Logback JNDI RCE (CVE-2021-42550) -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
+        </dependency>
     </dependencies>
 
     <build>
