@@ -296,7 +296,7 @@
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
-            <version>7.8</version>
+            <version>9.37.4</version>
         </dependency>
 
         <!-- Protobuf Java DoS (CVE-2021-22569) -->
